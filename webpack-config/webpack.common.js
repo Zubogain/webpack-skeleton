@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 
 const PATH = {
     src: path.join(__dirname, "../src"),
@@ -27,8 +28,7 @@ module.exports = {
         ...PAGES.map(
             page =>
                 new HtmlWebpackPlugin({
-                    template: `${PATH.src}/${page}`,
-                    filename: `./${page}`
+                    template: `${PATH.src}/${page}`
                 })
         ),
         new MiniCssExtractPlugin({
@@ -39,7 +39,8 @@ module.exports = {
             { from: `${PATH.src}/assets/img`, to: "assets/img" },
             { from: `${PATH.src}/assets/fonts`, to: "assets/fonts" },
             { from: `${PATH.src}/static`, to: "" }
-        ])
+        ]),
+        new VueLoaderPlugin()
     ],
     module: {
         rules: [
@@ -47,6 +48,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: "/node_modules/",
                 loader: "babel-loader"
+            },
+            {
+                test: /\.vue$/,
+                loader: "vue-loader"
             },
             {
                 test: /\.scss$/,

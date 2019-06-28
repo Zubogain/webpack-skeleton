@@ -11,6 +11,9 @@ module.exports = merge(common, {
         overlay: {
             warnings: true,
             errors: true
+        },
+        historyApiFallback: {
+            index: "/index.html"
         }
     },
     plugins: [

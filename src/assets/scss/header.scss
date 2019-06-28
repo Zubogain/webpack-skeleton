@@ -1,0 +1,11 @@
+.header {
+    background-color: rgb(71, 151, 134);
+    &__logo {
+        text-align: center;
+        font-size: 2em;
+        padding: 0.5em 0 0.5em;
+        color: white;
+        margin: 0;
+        text-transform: uppercase;
+    }
+}
