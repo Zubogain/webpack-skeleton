@@ -1,1 +1,1 @@
-<h1>webpack skeleton for develop multi layout landing</h1>
+<h1>webpack skeleton for develop SPA with vue/vuex/vue-router</h1>
