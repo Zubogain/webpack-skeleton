@@ -1,0 +1,1 @@
+<h1>webpack skeleton for develop multi layout landing</h1>
