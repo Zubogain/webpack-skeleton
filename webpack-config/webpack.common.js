@@ -32,8 +32,8 @@ module.exports = {
                 })
         ),
         new MiniCssExtractPlugin({
-            filename: "css/[name].[hash].css",
-            chunkFilename: "[id].[hash].css"
+            filename: "./assets/css/[name].[hash].css",
+            chunkFilename: "./assets/css/[id].[hash].css"
         }),
         new CopyWebpackPlugin([
             { from: `${PATH.src}/assets/img`, to: "assets/img" },
@@ -56,24 +56,30 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: "../../"
+                        }
+                    },
                     "css-loader",
+                    "resolve-url-loader",
                     "postcss-loader",
-                    "sass-loader"
+                    "sass-loader?sourceMap"
                 ]
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "file-loader",
                 options: {
-                    name: "[name].[ext]"
+                    name: "./assets/fonts/[name].[ext]"
                 }
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: "file-loader",
                 options: {
-                    name: "[name].[ext]"
+                    name: "./assets/img/[name].[ext]"
                 }
             }
         ]
