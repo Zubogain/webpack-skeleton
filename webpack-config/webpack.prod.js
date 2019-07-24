@@ -3,12 +3,11 @@ const common = require("./webpack.common.js");
 const jsObfuscator = require("webpack-obfuscator");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const imageminMozjpeg = require("imagemin-mozjpeg");
 
 module.exports = merge(common, {
     mode: "production",
-    output: {
-        publicPath: "./"
-    },
     plugins: [
         new jsObfuscator(
             {
@@ -43,7 +42,12 @@ module.exports = merge(common, {
                 unicodeEscapeSequence: false
             },
             "js/vendors~app.js"
-        )
+        ),
+        new ImageminPlugin({
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            pngquant: { quality: 85 },
+            plugins: [imageminMozjpeg({ quality: 85 })]
+        })
     ],
     optimization: {
         minimizer: [

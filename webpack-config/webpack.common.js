@@ -19,7 +19,7 @@ module.exports = {
         app: `${PATH.src}/js/index.js`
     },
     output: {
-        filename: "js/[name].js",
+        filename: "./js/[name].js",
         path: PATH.dist
     },
     plugins: [
@@ -67,14 +67,16 @@ module.exports = {
                 test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "file-loader",
                 options: {
-                    name: "./assets/fonts/[name].[ext]"
+                    name: "[name].[ext]",
+                    outputPath: "assets/fonts"
                 }
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
                 loader: "file-loader",
                 options: {
-                    name: "./assets/img/[name].[ext]"
+                    name: "[name].[ext]",
+                    outputPath: "assets/img"
                 }
             }
         ]
