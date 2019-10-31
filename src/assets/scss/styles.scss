@@ -1,11 +1,19 @@
+@import "./fonts.scss";
 @import "./header.scss";
 
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 html {
-    font-size: 62.5%;
-    font-family: "Roboto", sans-serif;
+  font-size: 62.5%;
+  font-family: "Roboto", "Times New Roman", Times, serif;
+}
+
+.main {
+  background-image: url("../img/backgrounds/avatar.png");
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-size: 50%;
 }

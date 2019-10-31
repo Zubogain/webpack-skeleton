@@ -1,5 +1,8 @@
 <template>
-    <h2 class="start_success">The launch was successful!</h2>
+    <div>
+        <h2 class="start_success">The launch was successful!</h2>
+        <img src="../../assets/img/image.png" alt="image" width="500" height="500" />
+    </div>
 </template>
 
 <script>
